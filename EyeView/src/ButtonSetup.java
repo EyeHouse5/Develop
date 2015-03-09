@@ -1,3 +1,13 @@
+/**
+ * This class implements button element functions
+ * 
+ * @version 1
+ * 27.02.15
+ * @author EyeHouse
+ * 
+ * Copyright 2015 EyeHouse
+ */
+
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -10,19 +20,20 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-/**
- *  * Buttons with different background colours.  * @author tp669, MingdiZ  * @see
- * javafx.scene.control.Button  * @related controls/buttons/GraphicButton  * @related
- * controls/buttons/HyperlinkSample  
- */
 
 public class ButtonSetup {
 	private String buttonColour, buttonBorderColour, buttonColourRGB,
 			buttonBorderColourRGB, buttonText;
 	private int xSize, ySize, xPos, yPos, xGridSize, yGridSize;
 
-	/*
-	 * Colour example: "red" or "orange"
+	/**
+	 * This method is to set up the colour of a button with popular colour options
+	 * @param button
+	 * 			the name of the button
+	 * @param colour
+	 * 			the background colour of the button
+	 * @param borderColour
+	 * 			the border colour of the button
 	 */
 	void setColour(Button button, String colour, String borderColour) {
 		buttonColour = colour;
@@ -31,21 +42,46 @@ public class ButtonSetup {
 				+ borderColour + ";");
 	}
 
-	/*
-	 * RBG example: "30,170,255"
+	/**
+	 * This method is to set up the colour of a button in RGB
+	 * @param button
+	 * 			the name of the button
+	 * @param RGB
+	 * 			the background colour in RGB of the button 
+	 * @param borderRGB
+	 * 			the border colour in RGB of the button
 	 */
+	
 	void setRGB(Button button, String RGB, String borderRGB) {
 		buttonColourRGB = RGB;
 		buttonBorderColourRGB = borderRGB;
 		button.setStyle("-fx-base: rgb(" + RGB + ");-fx-background: rgb("
 				+ borderRGB + ");");
 	}
-
+	
+	/**
+	 * This method is to set the text on the button
+	 * @param button
+	 * 			the name of the button
+	 * @param text
+	 * 			the text on the button
+	 */
+	
 	void setText(Button button, String text) {
 		buttonText = text;
 		button.setText(text);
 	}
 
+	/**
+	 * This method is to set the size of a button	
+	 * @param button
+	 * 			the name of the button
+	 * @param x
+	 * 			the length of the button in horizontal
+	 * @param y
+	 * 			the length of the button in vertical
+	 */
+	
 	void setSize(Button button, int x, int y) {
 		xSize = x;
 		ySize = y;
@@ -53,10 +89,20 @@ public class ButtonSetup {
 		button.setMaxSize(x, y);
 	}
 
-	/*
-	 * x and y sets the position on the GridPane. xSize and ySize specifies how
-	 * many grid the button can cross on GridPane This method only works on
-	 * GridPane
+	/**
+	 * This method is to add the button without size on the panel
+	 * @param gridpane
+	 * 			
+	 * @param button
+	 * 			the name of the button
+	 * @param x
+	 * 			the horizontal position of the button
+	 * @param y
+	 * 			the vertical position of the button
+	 * @param xSize
+	 * 			the length of the grid in horizontal
+	 * @param ySize
+	 * 			the length of the grid in vertical
 	 */
 	void addButton(GridPane gridpane, Button button, int x, int y, int xSize,
 			int ySize) {
@@ -67,41 +113,74 @@ public class ButtonSetup {
 		gridpane.add(button, x, y, xSize, ySize);
 	}
 
+	/**
+	 * This method is to add the button with size on the panel	
+	 * @param gridpane
+	 * 			
+	 * @param button
+	 * 			the name of the button
+	 * @param x
+	 * 			the horizontal position of the button
+	 * @param y
+	 * 			the vertical position of the button
+	 */
 	void addButton(GridPane gridpane, Button button, int x, int y) {
 		xPos = x;
 		yPos = y;
 		gridpane.add(button, x, y);
 	}
 
-	/*
-	 * This method returns the image that is passed in as a button. Note that
-	 * the image but be the size that you require the button to be. For ease,
-	 * save image in bin folder.
+	/**
+	 * This method is to set the image button
+	 * @param primaryStage
+	 * 			
+	 * @param image
+	 * 			the image on the button
+	 * @param text
+	 * 			the text on the button
+	 * @return
+	 * 			get the button after setting
 	 */
 	Button setImage(Stage primaryStage, Image image, String text) {
+		// Define a group for content on the button
 		Group root = new Group();
 		primaryStage.setResizable(false);
+		// Set the location of the button
 		primaryStage.setScene(new Scene(root, 40, 10));
+		// Load image
 		ImageView imageView = new ImageView(image);
+		// Add the image and text to the button
 		Button button = new Button(text, imageView);
+		// Display the image and text in the centre of the button
 		button.setContentDisplay(ContentDisplay.CENTER);
 		root.getChildren().add(button);
 		return button;
 	}
 
-	/*
-	 * This method returns a hyperlink with the text and image passed in. If no
-	 * image is needed then pass null.
+	/**
+	 * This method is to set the hyperlink
+	 * @param primaryStage
+	 * 			
+	 * @param image
+	 * 			the image of the hyperlink
+	 * @param text
+	 * 			the text of the hyperlink
+	 * @return
+	 * 			get the hyperlink after setting
 	 */
 	Hyperlink setHyperlink(Stage primaryStage, Image image, String text) {
+		// Define a group for content of the hyperlink
 		Group root = new Group();
 		primaryStage.setResizable(false);
+		// Set the location of the hyperlink
 		primaryStage.setScene(new Scene(root, 400, 100));
+		// Set the height of vbox to be 5 and display in centre left
 		VBox vbox = new VBox();
 		vbox.setSpacing(5);
 		vbox.setAlignment(Pos.CENTER_LEFT);
+		// Define the text of hyperlink
 		Hyperlink h2 = new Hyperlink(text);
-
+		// load and display image for hyperlink
 		if (image != null) {
 			ImageView iv = new ImageView(image);
 			h2.setGraphic(iv);
@@ -112,46 +191,90 @@ public class ButtonSetup {
 		return h2;
 	}
 
+	/**
+	 * This returns the original background colour of the button
+	 * @return the original background colour of the button before any processing
+	 */
 	String getColour() {
 		return buttonColour;
 	}
-
+	
+	/**
+	 * This returns the original border colour of the button
+	 * @return the original border colour of the button before any processing
+	 */
 	String getBorderColour() {
 		return buttonBorderColour;
 	}
-
+	
+	/**
+	 * This returns the original background colour in RGB of the button
+	 * @return the original background colour in RGB of the button before any processing
+	 */
 	String getColourRGB() {
 		return buttonColourRGB;
 	}
-
+	
+	/**
+	 * This returns the original border colour in RGB of the button
+	 * @return the original border colour in RGB of the button before any processing
+	 */
 	String getBorderColourRGB() {
 		return buttonBorderColourRGB;
 	}
-
+	
+	/**
+	 * This returns the original text on the button
+	 * @return the original text on the button before any processing
+	 */
 	String getText() {
 		return buttonText;
 	}
 
+	/**
+	 * This returns the original horizontal length on the button
+	 * @return the original horizontal length of the button before any processing
+	 */
 	int getXSize() {
 		return xSize;
 	}
 
+	/**
+	 * This returns the original vertical length on the button
+	 * @return the original vertical length of the button before any processing
+	 */	
 	int getYSize() {
 		return ySize;
 	}
 
+	/**
+	 * This returns the original horizontal position of the button
+	 * @return the original horizontal position f the button before any processing
+	 */	
 	int getXPos() {
 		return xPos;
 	}
 
+	/**
+	 * This returns the original vertical position of the button
+	 * @return the original vertical position of the button before any processing
+	 */	
 	int getYPos() {
 		return yPos;
 	}
 
+	/**
+	 * This returns the original horizontal size of the grid
+	 * @return the original horizontal size of the grid before any processing
+	 */	
 	int getXGridSize() {
 		return xGridSize;
 	}
 
+	/**
+	 * This returns the original vertical size of the grid
+	 * @return the original vertical size of the grid before any processing
+	 */		
 	int getYGridSize() {
 		return yGridSize;
 	}
