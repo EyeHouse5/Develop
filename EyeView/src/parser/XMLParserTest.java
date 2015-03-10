@@ -12,7 +12,6 @@ import org.junit.Test;
 
 /**
  * @author tp669
- *
  */
 public class XMLParserTest {
 
