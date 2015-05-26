@@ -68,7 +68,6 @@ public class Database {
 	// field
 	// required to check if you even give the user the option
 
-
 	/**
 	 * A void function used to open our database connection
 	 */
@@ -127,7 +126,7 @@ public class Database {
 			insertUser.setBoolean(landlord, userDetails.landlord);
 			insertUser.setString(DOB, userDetails.DOB);
 			insertUser.setBoolean(admin, userDetails.admin);
-			
+
 			try {
 				picture = FileManager
 						.readFile("eyehouse/defaults/default_profpic.jpg");
@@ -181,9 +180,7 @@ public class Database {
 					idnumber = id.getInt("hid");
 				}
 			}
-
 			// take all the users details and put them in an instance of user
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 			e.getMessage();
@@ -211,8 +208,7 @@ public class Database {
 				}
 			}
 			if (!title.next()) {
-				System.out
-						.println("\nHouse doesnt exist");
+				System.out.println("\nHouse doesnt exist");
 				return false;
 			}
 		} catch (SQLException e) {
@@ -457,7 +453,7 @@ public class Database {
 		else
 			return user;
 	}
-	
+
 	/**
 	 * To be used if the user has been confirmed to exist in the login stage if
 	 * they do exist then the username and password is correct this gets all the
@@ -479,7 +475,7 @@ public class Database {
 			// execute
 			userDetails = getUsername.executeQuery();
 			// take all the users details and put them in an instance of user
-			if(userDetails.next()) {
+			if (userDetails.next()) {
 				// construct an instance using the logged on users details
 				username = userDetails.getString("username");
 			}
@@ -523,7 +519,7 @@ public class Database {
 		else
 			return house;
 	}
-	
+
 	public static ArrayList<House> getLandlordProperties(int uid) {
 		ResultSet houses;
 		ArrayList<House> list = new ArrayList<House>();
@@ -1020,7 +1016,7 @@ public class Database {
 			e.getMessage();
 			return false;
 		}
-		System.out.println("\nSucces! Inserted User Review");
+		System.out.println("\nSuccess! Inserted User Review");
 		return true;
 	}
 
@@ -1545,6 +1541,108 @@ public class Database {
 		return true;
 	}
 
+	/**
+	 * 
+	 * @param vid
+	 * @param room
+	 * @param time
+	 * @return true on success
+	 * @return false on failure
+	 */
+	public static boolean insertVideoMarker(int vid, String room, double time) {
+
+		ResultSet check = null;
+		// Check if video has marker with the same room name already
+		// room names for each video are unique within that video
+		// eg vid=3 cannot have two 'living room' markers
+		try {
+			PreparedStatement checkVideoMarkers = con
+					.prepareStatement("SELECT * FROM markers WHERE vid=? AND room=?");
+			checkVideoMarkers.setInt(1, vid);
+			checkVideoMarkers.setString(2, room);
+
+			check = checkVideoMarkers.executeQuery();
+
+			if (check.next()) {
+				System.out
+						.println("\nThis room marker already exists.\nDelete or enter different room name.");
+				return false;
+			}
+
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+			System.out.println("\nInsert Marker Error: " + e1.getErrorCode());
+			return false;
+		}
+
+		try {
+			PreparedStatement insertMarker = con
+					.prepareStatement("INSERT INTO markers "
+							+ "VALUES (?,?,?,?)");
+			insertMarker.setInt(1, 0);
+			insertMarker.setInt(2, vid);
+			insertMarker.setString(3, room);
+			insertMarker.setDouble(4, time);
+
+			insertMarker.executeUpdate();
+
+			System.out.println("\nMarker Inserted");
+
+			return true;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("\nInsert Marker Error: " + e.getErrorCode());
+			return false;
+		}
+	}
+
+	public static boolean deleteVideoMarker(Marker videoMarker) {
+
+		// Trys to drop the marker with the relevant marker id (mid)
+		try {
+			PreparedStatement dropMarker = con
+					.prepareStatement("DELETE FROM markers WHERE mid=?");
+			dropMarker.setInt(1, videoMarker.mid);
+			dropMarker.executeUpdate();
+			System.out.println("\nMarker Deleted");
+			return true;
+		} catch (SQLException e) {
+			System.out.println("\nDelete Marker Error: " + e.getErrorCode());
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public static ArrayList<Marker> getVideoMarkers(int vid) {
+
+		ResultSet markers;
+		ArrayList<Marker> list = new ArrayList<Marker>();
+
+		try {
+			PreparedStatement getVideoMarkers = con
+					.prepareStatement("SELECT * FROM markers WHERE vid=?");
+
+			getVideoMarkers.setInt(1, vid);
+
+			markers = getVideoMarkers.executeQuery();
+
+			// loop through markers for the vid
+			// Enter them into an array list
+			while (markers.next()) {
+				list.add(new Marker(markers));
+			}
+
+			return list;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("\nGet Markers Error: " + e.getErrorCode());
+
+			return list;
+		}
+	}
+
 	public static void main(String[] args) throws Exception {
 		// Connect to the Database
 		dbConnect();
@@ -1560,7 +1658,7 @@ public class Database {
 
 		String title = "Testing Date Available";
 
-		int mode = 2;
+		int mode = 101;
 		boolean insertSuccess;
 		boolean houseDeleted;
 		boolean updateSuccess;
@@ -1570,6 +1668,30 @@ public class Database {
 
 		// testing switch
 		switch (mode) {
+		case 101:
+			// insert
+			double time = 13.5;
+			insertVideoMarker(28, "living room", time);
+			insertVideoMarker(28, "kitchen", time + 10);
+			insertVideoMarker(28, "Sex room", time + 20);
+			// get
+			ArrayList<Marker> markersList = new ArrayList<Marker>();
+
+			markersList = getVideoMarkers(28);
+
+			int n;
+			for (n = 0; n < markersList.size(); n++) {
+
+				System.out.println("\nFor video: " + markersList.get(n).vid
+						+ " Room: " + markersList.get(n).room + " Time is: "
+						+ markersList.get(n).markerTime);
+				// delete
+				if (n == 2) {
+					deleteVideoMarker(markersList.get(n));
+				}
+			}
+
+			break;
 		case 14:
 			int tempPrc = 9001;
 			// for a date string
@@ -1610,7 +1732,7 @@ public class Database {
 			insert.DOB("0000-01-01");
 			String encryptedPassword = DataHandler.crypt(password);
 			insert.password(encryptedPassword);
-			
+
 			// insert
 			insertSuccess = userInsert(insert);
 			if (insertSuccess == false) {
@@ -1712,7 +1834,7 @@ public class Database {
 
 			break;
 		case 16:
-			
+
 			// int hid5 = getID(tempu5, temph5, 2);
 			ArrayList<HouseImage> list = new ArrayList<HouseImage>();
 			list = getHouseImageSet(10);
