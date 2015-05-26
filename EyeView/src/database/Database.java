@@ -73,7 +73,7 @@ public class Database {
 	 */
 	public static String dbConnect() {
 		// Create a connection with db:master_db user:root pw:
-		String url = "127.0.0.1";
+		url = "127.0.0.1";
 		try {
 			System.out.print("Establishing connection via PuTTY... ");
 			con = DriverManager.getConnection("jdbc:mysql://" + url
