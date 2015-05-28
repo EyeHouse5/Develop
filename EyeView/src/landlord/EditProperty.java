@@ -517,14 +517,6 @@ public class EditProperty extends presenter.Window {
 		// Add video player to GridPane
 		grid.add(videoPane, 0, 2);
 		GridPane.setConstraints(videoPane, 0, 2, 3, 1, HPos.CENTER, VPos.CENTER);
-
-		ButtonType button3 = new ButtonType("166,208,255", null,
-				Translate.translateText(languageIndex, "Remove Video"), 90, 30);
-		Button videoRemove = new SetupButton().CreateButton(button3);
-		videoRemove.setOnAction(new RemoveVideo());
-		grid.add(videoRemove, 0, 2);
-		GridPane.setConstraints(videoRemove, 1, 2, 1, 1, HPos.CENTER,
-				VPos.CENTER);
 	}
 
 	private void SetupRoomMarkers() {
@@ -547,6 +539,11 @@ public class EditProperty extends presenter.Window {
 		setMarkerButton = new SetupButton().CreateButton(button1);
 		setMarkerButton.setOnAction(new AddMarker());
 		setMarkerButton.setDisable(true);
+		
+		ButtonType button3 = new ButtonType("166,208,255", null,
+				Translate.translateText(languageIndex, "Remove Video"), 120, 30);
+		Button videoRemove = new SetupButton().CreateButton(button3);
+		videoRemove.setOnAction(new RemoveVideo());
 
 		// Listen for TextField text changes
 		newRoomField.textProperty().addListener(new ChangeListener<String>() {
@@ -598,7 +595,7 @@ public class EditProperty extends presenter.Window {
 
 		// Add marker setup to HBox
 		markerSetup.getChildren().addAll(addNewRoomLabel, newRoomField,
-				setMarkerButton);
+				setMarkerButton,videoRemove);
 		markerSetup.setAlignment(Pos.CENTER);
 		markerListHeader.getChildren()
 				.addAll(roomNamesHeader, videoTimesHeader);
@@ -931,8 +928,10 @@ public class EditProperty extends presenter.Window {
 
 		public void handle(ActionEvent arg0) {
 
-			HouseVideo currentVideo = Database.checkHouseVideo(owner, currentPropertyID);
-			Database.deleteVideo(owner, currentVideo);
+			if(hid != 0){
+				HouseVideo currentVideo = Database.checkHouseVideo(owner, currentPropertyID);
+				Database.deleteVideo(owner, currentVideo);
+			}
 
 			videoPath = null;
 			video = null;
