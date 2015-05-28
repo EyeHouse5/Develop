@@ -990,7 +990,11 @@ public class EditProperty extends presenter.Window {
 				newMarker.getChildren().addAll(newRoomLabel, newVideoTimeLabel);
 
 				newMarker.setAlignment(Pos.CENTER_LEFT);
-
+				
+				double videoTime = Double.parseDouble(video.printCurrentVideoTime());
+				String roomMarker = newRoomField.getText();
+				
+				Database.insertVideoMarker(hid, roomMarker, videoTime);
 				items.add(newMarker);
 				newRoomField.clear();
 				setMarkerButton.setDisable(true);
