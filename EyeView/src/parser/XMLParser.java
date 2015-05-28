@@ -247,7 +247,7 @@ public class XMLParser extends DefaultHandler {
 		if ("".equals(elementName)) {
 			elementName = qName;
 		}
-
+		System.out.println(elementName);
 		switch (elementName) {
 		case "slide":
 			slideshow.addSlide(currentSlide);
@@ -255,8 +255,9 @@ public class XMLParser extends DefaultHandler {
 		case "documentinfo":
 			slideshow.setInfo(info);
 			break;
-		case "defaults":
+		case "defaultsettings":
 			slideshow.setDefaults(defaults);
+			System.out.println("Test 111");
 			break;
 		case "author":
 			info.setAuthor(elementBuffer.toString().trim());
