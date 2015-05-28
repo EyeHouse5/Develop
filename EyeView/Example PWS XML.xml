@@ -38,7 +38,7 @@
 			slide TWO
 		</text>
 		<graphic type="rectangle" xstart="0.5" ystart="0.5" xend="0.7" yend="0.7" solid="true" graphiccolor="#ff223344" duration="1.5" />
-		<video sourcefile="H:/git/Develop2/EyeView/resources/videos/avengers-featurehp.mp4" xstart="0.4"  ystart="0.0"/>
-		<video sourcefile="H:/git/Develop2/EyeView/resources/videos/avengers-featurehp.mp4" xstart="0.4"  ystart="0.5"/>
+		<video sourcefile="resources/videos/avengers-featurehp.mp4" xstart="0.4"  ystart="0.0"/>
+		<video sourcefile="resources/videos/avengers-featurehp.mp4" xstart="0.4"  ystart="0.5"/>
 	</slide>
 </slideshow>
