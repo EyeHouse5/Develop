@@ -185,7 +185,7 @@ public class VideoUploadPage extends Window {
 
 		// House house = Database.getHouse(currentPropertyID);
 		// HouseVideo vid = Database.getVideoInfo()
-		video = new VideoElement(newVideoFileString);
+		video = new VideoElement(newVideoFileString, true);
 		video.setStylesheet("resources/videoStyle.css");
 		video.setWidth(500);
 		video.setAutoplay(true);

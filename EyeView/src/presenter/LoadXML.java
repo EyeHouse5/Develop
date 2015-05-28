@@ -127,7 +127,7 @@ public class LoadXML extends Window {
 			StackPane videoPane = new StackPane();
 			videoPane.relocate(0, 0);
 			videoPane.resize(xResolution, yResolution);
-			VideoElement video = new VideoElement(currentVideo.getSource());
+			VideoElement video = new VideoElement(currentVideo.getSource(), false);
 			video.setWidth(500);
 			video.setAutoplay(true);
 			video.setXpos(currentVideo.getXstart());

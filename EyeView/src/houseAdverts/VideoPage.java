@@ -31,10 +31,10 @@ public class VideoPage extends Window {
 
 		House house = Database.getHouse(currentPropertyID);
 		// HouseVideo vid = Database.getVideoInfo()
-		VideoElement video = new VideoElement("resources/videos/avengers-featurehp.mp4");
+		VideoElement video = new VideoElement("resources/videos/avengers-featurehp.mp4", true);
 		video.setStylesheet("resources/videoStyle.css");
 		video.setWidth(500);
-		video.setAutoplay(false);
+		video.setAutoplay(true);
 		video.display(videoPane);
 		
 		videoPane.relocate(300, 100);

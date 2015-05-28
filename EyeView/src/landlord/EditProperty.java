@@ -502,7 +502,7 @@ public class EditProperty extends presenter.Window {
 
 		System.out.println("Current Video id : " + currentVideo.vid);
 
-		video = new VideoElement(newVideoFileString);
+		video = new VideoElement(newVideoFileString, true);
 		video.setStylesheet("resources/videoStyle.css");
 		video.setWidth(500);
 		video.setAutoplay(true);
