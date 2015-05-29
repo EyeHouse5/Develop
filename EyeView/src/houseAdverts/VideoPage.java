@@ -1,18 +1,10 @@
 package houseAdverts;
 
+import handlers.VideoElement;
+
 import java.util.ArrayList;
 
-import Button.ButtonType;
-import Button.SetupButton;
-
-import presenter.SlideContent;
-import presenter.Window;
-import handlers.VideoElement;
-import database.Database;
-import database.House;
-import database.HouseImage;
-import database.HouseVideo;
-import database.Marker;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -20,34 +12,36 @@ import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import landlord.EditProperty.Browse;
-import landlord.EditProperty.DeleteImage;
-import landlord.EditProperty.Upload;
+import javafx.util.Duration;
 import language.Translate;
+import presenter.SlideContent;
+import presenter.Window;
+import Button.ButtonType;
+import Button.SetupButton;
+import database.Database;
+import database.House;
+import database.HouseVideo;
+import database.Marker;
+import database.User;
+
 
 public class VideoPage extends Window {
+	
 	private static Label topTitle = new Label();
 	private ArrayList<Marker> videoMarkers;
+	private VideoElement video;
 	
 	public VideoPage() {
 		setupTitle();
 		setupVideoPlayer();
+		setupMarkerButtons();
 		UpdateLanguage();
 		SlideContent.setupBackButton();
 
@@ -57,13 +51,13 @@ public class VideoPage extends Window {
 
 		StackPane videoPane = new StackPane();
 
-		VideoElement video = new VideoElement("resources/videos/avengers-featurehp.mp4");
+		video = new VideoElement("resources/videos/avengers-featurehp.mp4");
 		video.setStylesheet("resources/videoStyle.css");
 		video.setWidth(600);
 		video.setAutoplay(false);
 		video.display(videoPane);
 		
-		videoPane.relocate(300, 130);
+		videoPane.relocate(250, 130);
 		
 		root.getChildren().add(videoPane);
 	}
@@ -81,37 +75,58 @@ public class VideoPage extends Window {
 		topTitle.setText(Translate.translateText(languageIndex, "Video Tour"));
 	}
 	
-	public void setupMarkerButtons(ArrayList<Marker> videoMarkers){
+	public void setupMarkerButtons(){
 		
-		this.videoMarkers = videoMarkers;
+		House house = Database.getHouse(currentPropertyID);
+		User owner = Database.getUser(Database.getUsername(house.uid));
+		HouseVideo videoInfo = Database.checkHouseVideo(owner, house.hid);
+		videoMarkers = Database.getVideoMarkers(videoInfo.vid);
 		
 		TilePane markerTiles = new TilePane();
 		markerTiles.setVgap(10);
 		markerTiles.setHgap(10);
 		markerTiles.setPadding(new Insets(20, 20, 20, 20));
 		markerTiles.setTileAlignment(Pos.CENTER);
-		markerTiles.setPrefColumns(2);
+		markerTiles.setPrefColumns(5);
 		ScrollPane markersWindow = new ScrollPane();
-		markersWindow.setMinSize(545, 480);
-		markersWindow.setMaxSize(545, 480);
+		markersWindow.setMinSize(600, 200);
+		markersWindow.setMaxSize(600, 200);
 		
 		for (int i = 0; i < videoMarkers.size(); i++) {
 			
-			ButtonType button = new ButtonType("166,208,255", null,
-					Translate.translateText(languageIndex, "Marker"), 70, 30);
-			Button buttonBrowse = new SetupButton().CreateButton(button);
-			buttonBrowse.setCursor(Cursor.HAND);
-			buttonBrowse.setOnAction();
+			Marker marker = videoMarkers.get(i);
 			
-			markerTiles.getChildren().add(button);
+			ButtonType button = new ButtonType("166,208,255", null,
+					Translate.translateText(languageIndex, marker.room), 100, 30);
+			Button buttonTime = new SetupButton().CreateButton(button);
+			buttonTime.setCursor(Cursor.HAND);
+			buttonTime.setOnAction(new VideoTime(i));
+			
+			markerTiles.getChildren().add(buttonTime);
 					
 		}
 	
 		markersWindow.setContent(markerTiles);
-		markersWindow.relocate(300, 500);
+		markersWindow.relocate(250, 500);
 		root.getChildren().add(markersWindow);
 
 		GridPane.setConstraints(markersWindow, 0, 2, 3, 1, HPos.CENTER,
 				VPos.CENTER);
+	}
+	
+	public class VideoTime implements EventHandler<ActionEvent> {
+
+		private int index;
+		
+		public VideoTime(int index){
+			this.index = index;
+		}
+		
+		public void handle(ActionEvent arg0) {
+			
+			Duration markerTime = Duration.seconds(videoMarkers.get(index).markerTime);
+			video.setVideoTime(markerTime);
+			video.playVideo();
+		}
 	}
 }

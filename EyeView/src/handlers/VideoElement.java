@@ -530,5 +530,14 @@ public class VideoElement {
 	public void setAutoplay(boolean autoplay) {
 		this.autoplay = autoplay;
 	}
+	
+	public void setVideoTime(Duration videoTime){
+		
+		mediaPlayer.seek(videoTime);
+	}
+	
+	public void playVideo(){
+		mediaPlayer.play();
+	}
 
 }
