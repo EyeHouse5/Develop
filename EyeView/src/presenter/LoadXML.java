@@ -168,6 +168,8 @@ public class LoadXML extends Window {
 		for(int i  = 0 ; i < slideAudio.size() ; i ++){
 			slideAudio.get(i).stopAudio();
 		}
+		slideVideos.clear();
+		slideAudio.clear();
 	}
 
 }

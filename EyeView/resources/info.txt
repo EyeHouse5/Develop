@@ -1,1 +1,1 @@
-It SHOULD display this!!!
+This test is from a .txt file
