@@ -7,6 +7,15 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This class is used to check strings for words listed
+ * in the black listed words text file
+ * 
+ * @version 3.8 02.06.15
+ * @author EyeHouse
+ * 
+ *         Copyright 2015 EyeHouse
+ */
 public class BadWordCheck {
 	Scanner x;
 	String fileName = "src/language/blackListedWords.txt";

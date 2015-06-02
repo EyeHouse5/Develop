@@ -129,7 +129,13 @@ public class VideoElement {
 		autoplay = false;
 
 		/* Set up video player */
-		media = new Media(new File(filename).toURI().toString());
+		if (filename.contains("http://")){
+			media = new Media(filename);
+		} else {
+			media = new Media(new File(filename).toURI().toString());
+		}
+		
+		
 		mediaPlayer = new MediaPlayer(media);
 		mediaView = new MediaView(mediaPlayer);
 		mediaView.setId("video-container");

@@ -30,9 +30,14 @@ public class AudioHandler{
 	 * @param delay		Time delay before playback
 	 */
 	public void setupAudioElement(String filepath, float delay){
-		
+		String uriString;
 		/* Create audio file URI string */
-		String uriString = new File(filepath).toURI().toString();
+		if (filepath.contains("http://")){
+			uriString = filepath;
+		} else {
+			uriString = new File(filepath).toURI().toString();
+		}
+		
 		
 		/* Create media object */
 		Media audio = new Media(uriString);

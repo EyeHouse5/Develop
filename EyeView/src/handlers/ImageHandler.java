@@ -1,5 +1,6 @@
 package handlers;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import presenter.Window;
@@ -61,9 +62,16 @@ public class ImageHandler extends Window{
 		 */
 		xPosition = (float) (xResolution * imageData.xstart);
 		yPosition = (float) (yResolution * imageData.ystart);
-
+		
+		Image image;
+		
 		// Load Image from source file
-		Image image = new Image(imageData.sourcefile);
+		if (imageData.sourcefile.contains("http://")){
+			image = new Image(imageData.sourcefile);
+		} else {
+			image = new Image(new File(imageData.sourcefile).toURI().toString());
+		}
+		
 		ImageView imageObject = new ImageView(image);
 
 		// Get the width of the image file in pixels.
