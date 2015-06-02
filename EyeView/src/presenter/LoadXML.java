@@ -21,6 +21,15 @@ import parser.ImageData;
 import parser.TextData;
 import parser.VideoData;
 
+/**
+ * This class is used to load all the
+ * objects from an XML file.
+ * 
+ * @version 3.8 02.06.15
+ * @author EyeHouse
+ * 
+ *         Copyright 2015 EyeHouse
+ */
 public class LoadXML extends Window {
 
 	static ArrayList<VideoElement> slideVideos = new ArrayList<VideoElement>();
