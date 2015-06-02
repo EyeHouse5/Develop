@@ -22,7 +22,7 @@
 		<text sourcefile="" xstart="0.3" ystart="0.15" font="impact" fontsize="20" fontcolor="#ff0000ff" duration="0">
 			Use arrow keys to scroll through the slides.
 		</text>
-		<video sourcefile="resources/videos/avengers-featurehp.mp4" xstart="0.25"  ystart="0.3"/>
+		<video sourcefile="http://download.oracle.com/otndocs/javafx/JavaRap_ProRes_H264_768kbit_Widescreen.mp4" xstart="0.25"  ystart="0.3"/>
 	</slide>
 	<slide duration="0">
 		<text sourcefile="" xstart="0.38" ystart="0.05" font="impact" fontsize="40" fontcolor="#ff0000ff" duration="0">
@@ -31,11 +31,11 @@
 		<text sourcefile="" xstart="0.35" ystart="0.1" font="impact" fontsize="20" fontcolor="#ff0000ff" duration="0">
 			This slide demonstrates images
 		</text>
-		<image sourcefile="file:./resources/images/profile.png" xstart="0.25" ystart="0.5" scale="0.5" duration="1" starttime="0"/>
-		<image sourcefile="file:./resources/images/Skype.png" xstart="0.25" ystart="0.5" scale="1.0" duration="2" starttime="1"/>
-		<image sourcefile="file:./resources/images/warning.png" xstart="0.25" ystart="0.5" scale="1.0" duration="3" starttime="2"/>
-		<image sourcefile="file:./resources/images/palace1.jpg" xstart="0.25" ystart="0.5" scale="1.0" duration="4" starttime="3"/>
-		<image sourcefile="file:./resources/images/palace2.jpg" xstart="0.25" ystart="0.5" scale="1.0" duration="5" starttime="4"/>
+		<image sourcefile="http://2.bp.blogspot.com/-wXSkXwW06FI/UGCr1wbLWSI/AAAAAAAAAsU/RVSgLdrL-QI/s1600/Ensemble.png" xstart="0.25" ystart="0.5" scale="0.5" duration="1" starttime="0"/>
+		<image sourcefile="http://playthegame.co.nf/images/KS.png" xstart="0.25" ystart="0.5" scale="1.0" duration="2" starttime="1"/>
+		<image sourcefile="http://2.bp.blogspot.com/-wXSkXwW06FI/UGCr1wbLWSI/AAAAAAAAAsU/RVSgLdrL-QI/s1600/Ensemble.png" xstart="0.25" ystart="0.5" scale="1.0" duration="3" starttime="2"/>
+		<image sourcefile="http://img.planespotters.net/photo/329000/original/VH-VFH-Jetstar-Airways-Airbus-A320-200_PlanespottersNet_329960.jpg" xstart="0.25" ystart="0.5" scale="1.0" duration="4" starttime="3"/>
+		<image sourcefile="http://sp.sony-europe.com/da/1007/300221.jpeg" xstart="0.25" ystart="0.5" scale="1.0" duration="5" starttime="4"/>
 	</slide>
 	<slide duration="0">
 		<text sourcefile="" xstart="0.4" ystart="0.05" font="impact" fontsize="40" fontcolor="#ff0000ff" duration="0">
@@ -50,7 +50,7 @@
 		<graphic type="oval" xstart="0.5" ystart="0.5" xend="0.7" yend="0.7" solid="true" graphiccolor="#ff0000ff" duration="2">
 			<cyclicshading shadingcolor="#88776655" />
 		</graphic>
-		<audio sourcefile="resources/Audios/Tail_Toddle.mp3" starttime="0" />
+		<audio sourcefile="http://playthegame.co.nf/audio/bottle.wav" starttime="0" />
 	</slide>
 	<slide duration="0">
 		<text sourcefile="" xstart="0.39" ystart="0.05" font="impact" fontsize="40" fontcolor="#ff0000ff" duration="0">
