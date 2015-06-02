@@ -32,10 +32,10 @@
 			This slide demonstrates images
 		</text>
 		<image sourcefile="http://2.bp.blogspot.com/-wXSkXwW06FI/UGCr1wbLWSI/AAAAAAAAAsU/RVSgLdrL-QI/s1600/Ensemble.png" xstart="0.25" ystart="0.5" scale="0.5" duration="1" starttime="0"/>
-		<image sourcefile="http://playthegame.co.nf/images/KS.png" xstart="0.25" ystart="0.5" scale="1.0" duration="2" starttime="1"/>
-		<image sourcefile="http://2.bp.blogspot.com/-wXSkXwW06FI/UGCr1wbLWSI/AAAAAAAAAsU/RVSgLdrL-QI/s1600/Ensemble.png" xstart="0.25" ystart="0.5" scale="1.0" duration="3" starttime="2"/>
-		<image sourcefile="http://img.planespotters.net/photo/329000/original/VH-VFH-Jetstar-Airways-Airbus-A320-200_PlanespottersNet_329960.jpg" xstart="0.25" ystart="0.5" scale="1.0" duration="4" starttime="3"/>
-		<image sourcefile="http://sp.sony-europe.com/da/1007/300221.jpeg" xstart="0.25" ystart="0.5" scale="1.0" duration="5" starttime="4"/>
+		<image sourcefile="http://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Wave.svg/170px-Wave.svg.png" xstart="0.25" ystart="0.5" scale="1.0" duration="2" starttime="1"/>
+		<image sourcefile="http://www.javaguru.co/wp-content/uploads/2015/02/java.jpg" xstart="0.25" ystart="0.5" scale="1.0" duration="3" starttime="2"/>
+		<image sourcefile="http://sp.sony-europe.com/da/1007/300221.jpeg" xstart="0.25" ystart="0.5" scale="1.0" duration="4" starttime="3"/>
+		<image sourcefile="http://www.javaguru.co/wp-content/uploads/2015/02/java.jpg" xstart="0.25" ystart="0.5" scale="1.0" duration="5" starttime="4"/>
 	</slide>
 	<slide duration="0">
 		<text sourcefile="" xstart="0.4" ystart="0.05" font="impact" fontsize="40" fontcolor="#ff0000ff" duration="0">
@@ -56,20 +56,26 @@
 		<text sourcefile="" xstart="0.39" ystart="0.05" font="impact" fontsize="40" fontcolor="#ff0000ff" duration="0">
 			Fourth Slide
 		</text>
-		<text sourcefile="" xstart="0.37" ystart="0.1" font="impact" fontsize="20" fontcolor="#ff0000ff" duration="0">
+		<text sourcefile="" xstart="0.37" ystart="0.1" font="calibri" fontsize="20" fontcolor="#ff0000ff" duration="0">
 			This slide demonstrates text
 		</text>
-		<text sourcefile="resources\info.txt" xstart="0.1" ystart="0.4" font="impact" fontsize="40" fontcolor="#f12300ff" duration="5"> 
+		<text sourcefile="" xstart="0.1" ystart="0.4" font="times new roman" fontsize="40" fontcolor="#f12300ff" duration="5"> 
+			Example Text
 		</text>
-		<text sourcefile="resources\info.txt" xstart="0.1" ystart="0.5" font="impact" fontsize="30" fontcolor="#ff00ffff" duration="4"> 
+		<text sourcefile="" xstart="0.1" ystart="0.5" font="arial" fontsize="30" fontcolor="#ff00ffff" duration="4">
+			Example Text 
 		</text>
-		<text sourcefile="resources\info.txt" xstart="0.1" ystart="0.6" font="impact" fontsize="20" fontcolor="#ffe100ff" duration="3"> 
+		<text sourcefile="" xstart="0.1" ystart="0.6" font="impact" fontsize="20" fontcolor="#ffe100ff" duration="3">
+			Example Text 
 		</text>
-		<text sourcefile="resources\info.txt" xstart="0.1" ystart="0.7" font="impact" fontsize="10" fontcolor="#feeee0ff" duration="2"> 
+		<text sourcefile="" xstart="0.1" ystart="0.7" font="impact" fontsize="10" fontcolor="#feeee0ff" duration="2">
+			Example Text 
 		</text>
-		<text sourcefile="resources\info.txt" xstart="0.1" ystart="0.8" font="impact" fontsize="5" fontcolor="#ff00aaaf" duration="1"> 
+		<text sourcefile="" xstart="0.1" ystart="0.8" font="impact" fontsize="5" fontcolor="#ff00aaaf" duration="1"> 
+			Example Text
 		</text>
-		<text sourcefile="resources\info.txt" xstart="0.1" ystart="0.9" font="impact" fontsize="1" fontcolor="#ffbbb0ff" duration="1"> 
+		<text sourcefile="" xstart="0.1" ystart="0.9" font="impact" fontsize="1" fontcolor="#ffbbb0ff" duration="1"> 
+			Example Text
 		</text>
 	</slide>
 	<slide duration="3">
