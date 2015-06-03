@@ -12,7 +12,7 @@
 		<fontsize>12</fontsize>
 		<fontcolor>#ff0000ff</fontcolor>
 	</defaultsettings>
-	<slide duration="0">
+	<slide duration="5">
 		<text sourcefile="" xstart="0.4" ystart="0.05" font="impact" fontsize="40" fontcolor="#ff0000ff" duration="0">
 			First Slide
 		</text>
